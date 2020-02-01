@@ -8,6 +8,7 @@ import './MainPage.css';
 
 class MainPage extends React.Component{
     componentDidMount() {
+        console.log(process.env.NODE_ENV.REACT_APP_SAY_HI)
         this.props.onRequestRobots();
     }
 
@@ -24,12 +25,12 @@ class MainPage extends React.Component{
             <div className='tc'>
                 <h1 className='f1'>RoboFriends</h1>
                 <SearchBox searchChange={onSearchChange} />
-                    <Scroll>
-                        { isPending ? <h1>Loading</h1> :
-                            <ErrorBoundry>
-                                <CardList robots={this.filterRobots(robots)} />
-                            </ErrorBoundry>
-                        }
+                <Scroll>
+                    { isPending ? <h1>Loading</h1> :
+                        <ErrorBoundry>
+                            <CardList robots={this.filterRobots(robots)} />
+                        </ErrorBoundry>
+                    }
                 </Scroll>
             </div>
         )
